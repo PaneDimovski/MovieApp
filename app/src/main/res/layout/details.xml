@@ -1,0 +1,90 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textGore"/>
+
+        <ImageView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/slika_detali">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/slikica"
+            android:layout_width="35dp"
+            android:background="@mipmap/favourites_empty_mdpi"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/slika_detali"
+            android:layout_height="35dp" />
+
+        <ImageView
+            android:id="@+id/slikica2"
+            android:layout_width="35dp"
+            android:background="@mipmap/favourites_full_mdpi"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/slika_detali"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/rate"
+            android:layout_width="35dp"
+            android:background="@mipmap/rate_empty_hdpi"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/slikica2"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/watch"
+            android:layout_width="35dp"
+            android:background="@mipmap/watchlist_add_hdpi"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/rate"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/SkyBlue"
+            android:layout_below="@+id/watch"
+            android:id="@+id/textReziser"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textReziser"
+            android:id="@+id/textScenario"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textScenario"
+            android:id="@+id/textSvezdi"/>
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/kopceEkipa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textSvezdi"
+            android:background="@color/colorAccent"
+            android:text="see full cast"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/kopceEkipa"
+            android:id="@+id/textOpis"/>
+
+    </RelativeLayout>
+
+</ScrollView>
