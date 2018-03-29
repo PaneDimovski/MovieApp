@@ -2,6 +2,8 @@ package com.movieapp.anti.movieapp.Activitys;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.movieapp.anti.movieapp.Adapters.PeopleRecyclerViewAdapter;
-import com.movieapp.anti.movieapp.Api.ApiService;
 import com.movieapp.anti.movieapp.Api.RestApi;
 import com.movieapp.anti.movieapp.MainActivity;
-import com.movieapp.anti.movieapp.Models.PeopleDataModel;
 import com.movieapp.anti.movieapp.Models.Token;
 import com.movieapp.anti.movieapp.Models.User;
 import com.movieapp.anti.movieapp.Others.PrefererencesManager;
@@ -30,7 +29,7 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
 
-    ApiService service;
+
     RestApi api3;
     RestApi api4;
     RestApi api5;
@@ -44,13 +43,23 @@ public class Login extends AppCompatActivity {
 
     @BindView(R.id.password)
     EditText pass;
+
     @BindView(R.id.username)
     EditText username;
 
     @BindView(R.id.kopce)
     Button kopce;
-    String   token2;
-    public PrefererencesManager2 manager;
+
+    @BindView(R.id.guest)
+    TextView guest;
+    @BindView(R.id.singin)
+    TextView singin;
+
+
+//    @BindView(R.id.kopce2)
+//    Button kopce2;
+
+    String token2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,19 +67,50 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
+        guest.setPaintFlags(guest.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
+        context = this;
+    }
+    @OnClick(R.id.singin)
+
+    public void klikklik(View view){
+
+        Intent intent2 = new Intent(Intent.ACTION_VIEW);
+        intent2.setData(Uri.parse("https://www.themoviedb.org/"));
+        startActivity(intent2);
 
     }
-
     @OnClick(R.id.kopce)
     public void Klik(View v) {
-        getToken();
+        if ( username.length() ==0  && pass.length() == 0   ) {
+
+            Toast.makeText(context, "Insert your Username and Password", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
+
+            getToken();
+
+        }
 
     }
+
+
+    @OnClick(R.id.guest)
+    public void Klik2(View v) {
+        String name = "guest" ;
+        String pass= "guest";
+
+        User guest = new User(name, pass);
+        Intent intent = new Intent (Login.this, MainActivity.class);
+        startActivity(intent);
+
+    }
+
+
 
 
     public void getToken() {
-
 
         api3 = new RestApi(Login.this);
         api3.checkInternet(new Runnable() {
@@ -83,19 +123,13 @@ public class Login extends AppCompatActivity {
                     public void onResponse(Call<Token> call, Response<Token> response) {
                         if (response.code() == 200) {
 
-//get session
-
                             tokenModel = response.body();
                             token = tokenModel.request_token;
 
-
-                            getLogin();  // text polinja
-
+                            getLogin();
 
                         } else if (response.code() == 401) {
-
-                            Toast.makeText(Login.this, "Greska na konekcija", Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(Login.this, " Connection Error, try again ", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -104,27 +138,11 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Something went wrong!", Toast.LENGTH_LONG).show();
                     }
                 });
-
             }
         });
-
-
     }
 
-
-//getsession(){
-    //onComlepte GET create session with login
-    // sesion ID da se zacuva
-    // koga ke se vkluci main ili splash scren direktno da se zacuva userot vo sharedPreferences
-//}
-
-
-//createSessionwithLogin(){
-    //onComlepte  tokenModel=response.body();
-    //PrefererencesManager2.addToken(tokenModel);
-//}
-
-    public void getLogin() {   // tuka se vnesuvaat stringovi za username pass
+    public void getLogin() {
 
         final User data = new User(username.getText().toString(), pass.getText().toString());
         api4 = new RestApi(Login.this);
@@ -140,44 +158,26 @@ public class Login extends AppCompatActivity {
 
                             tokenModel = response.body();
                             token2 = tokenModel.request_token;
-                            PrefererencesManager2.addUserID(token2, Login.this);
+
+                            PrefererencesManager2.addtoken(token2, Login.this);
+                            PrefererencesManager2.addUser(data.username.toString(),context);
+
                             getSesion();
 
-
-                            //getsession(){
-                            //onComlepte GET create session with login
-                            // sesion ID da se zacuva
-                            // koga ke se vkluci main ili splash scren direktno da se zacuva userot vo sharedPreferences
-
-
-//createSessionwithLogin(){
-                            //onComlepte  tokenModel=response.body();
-                            //PrefererencesManager2.addToken(tokenModel);
-//}
-
-
                         } else if (response.code() == 401) {
-
-                            Toast.makeText(Login.this, "Greska na konekcija", Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(Login.this, " Enter correct Username and password! ", Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onFailure(Call<Token> call, Throwable t) {
-                        Toast.makeText(Login.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "Conecction error!", Toast.LENGTH_LONG).show();
                     }
                 });
-
             }
         });
-
-
     }
 
-
     public void getSesion() {
-
 
         api5 = new RestApi(Login.this);
         api5.checkInternet(new Runnable() {
@@ -190,21 +190,16 @@ public class Login extends AppCompatActivity {
                     public void onResponse(Call<Token> call, Response<Token> response) {
                         if (response.code() == 200) {
 
-
                             tokenModel = response.body();
                             sesion = tokenModel.session_id;
 
                             PrefererencesManager2.addSessionID(sesion, Login.this);
 
-
                             Intent intent = new Intent(Login.this, MainActivity.class);
                             startActivity(intent);
 
-
                         } else if (response.code() == 401) {
-
-                            Toast.makeText(Login.this, "Greska na konekcija", Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(Login.this, " Connection Error, Session ID required ", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -213,13 +208,8 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Something went wrong!", Toast.LENGTH_LONG).show();
                     }
                 });
-
             }
         });
-
-
     }
-
-
 }
 

@@ -15,11 +15,14 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
+        app:itemBackground="@color/trans"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:background="@color/Beige"
+        android:background="@color/trans"
+        app:itemTextColor="@color/Beige"
+        app:itemIconTint="@color/PaleGoldenrod"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 

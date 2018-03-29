@@ -1,90 +1,134 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/pozadina3">
 
-    <RelativeLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/pozadina6">
 
-        <TextView
+        <RelativeLayout
+            android:id="@+id/linear1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textGore"/>
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_marginTop="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/slika_detali">
+            <RelativeLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#9d000000">
 
-        </ImageView>
+                <ImageView
+                    android:id="@+id/slika_detali"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:background="@color/trans" />
 
-        <ImageView
-            android:id="@+id/slikica"
-            android:layout_width="35dp"
-            android:background="@mipmap/favourites_empty_mdpi"
-            android:layout_marginLeft="10dp"
-            android:layout_below="@id/slika_detali"
-            android:layout_height="35dp" />
 
-        <ImageView
-            android:id="@+id/slikica2"
-            android:layout_width="35dp"
-            android:background="@mipmap/favourites_full_mdpi"
-            android:layout_marginLeft="10dp"
-            android:layout_below="@id/slika_detali"
-            android:layout_height="35dp" />
-        <ImageView
-            android:id="@+id/rate"
-            android:layout_width="35dp"
-            android:background="@mipmap/rate_empty_hdpi"
-            android:layout_marginLeft="10dp"
-            android:layout_below="@id/slikica2"
-            android:layout_height="35dp" />
-        <ImageView
-            android:id="@+id/watch"
-            android:layout_width="35dp"
-            android:background="@mipmap/watchlist_add_hdpi"
-            android:layout_marginLeft="10dp"
-            android:layout_below="@id/rate"
-            android:layout_height="35dp" />
+                <ImageView
+                    android:id="@+id/trailer"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_above="@id/slika_detali"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/playy">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/SkyBlue"
-            android:layout_below="@+id/watch"
-            android:id="@+id/textReziser"/>
+                </ImageView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textReziser"
-            android:id="@+id/textScenario"/>
+                <ImageView
+                    android:id="@+id/slikica"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@mipmap/favourites_empty_mdpi" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textScenario"
-            android:id="@+id/textSvezdi"/>
+                <ImageView
+                    android:id="@+id/rate"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@id/slikica"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@mipmap/rate_empty_hdpi" />
 
-        <Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/kopceEkipa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textSvezdi"
-            android:background="@color/colorAccent"
-            android:text="see full cast"/>
+                <ImageView
+                    android:id="@+id/watch"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@+id/rate"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@mipmap/watchlist_add_hdpi" />
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/kopceEkipa"
-            android:id="@+id/textOpis"/>
+            </RelativeLayout>
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/kopceEkipa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear"
+                android:background="@drawable/forma5"
+                android:text="see full cast"
+                android:textColor="@color/Beige"/>
 
-</ScrollView>
+            <TextView
+                android:id="@+id/textGore"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textReziser"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/White" />
+
+
+            <TextView
+                android:id="@+id/textReziser"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/kopceEkipa"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:id="@+id/textScenario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:layout_below="@+id/textReziser"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:id="@+id/textSvezdi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:layout_below="@+id/textScenario"
+                android:textColor="@color/White" />
+
+
+
+            <TextView
+                android:id="@+id/textOpis"
+                android:layout_width="match_parent"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textSvezdi"
+                android:layout_marginTop="19dp"
+                android:textColor="@color/Beige" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -9,6 +9,8 @@ import android.widget.Toast;
 import com.movieapp.anti.movieapp.Adapters.ExlorerRecyclerViewAdapter;
 import com.movieapp.anti.movieapp.Api.ApiService;
 import com.movieapp.anti.movieapp.Api.RestApi;
+import com.movieapp.anti.movieapp.Listeners.OnRowClickListener;
+import com.movieapp.anti.movieapp.Models.Movie;
 import com.movieapp.anti.movieapp.Models.MovieDataModel;
 import com.movieapp.anti.movieapp.Preferences.PrefererencesManager2;
 import com.movieapp.anti.movieapp.R;
@@ -46,14 +48,19 @@ public class Watchlist extends AppCompatActivity {
         api.checkInternet(new Runnable() {
             @Override
             public void run() {
-                Call<MovieDataModel> call = api.getWatchlist(sessionID);
+                Call<MovieDataModel> call = api.getWatchlists(sessionID);
                 call.enqueue(new Callback<MovieDataModel>() {
                     @Override
                     public void onResponse(Call<MovieDataModel> call, Response<MovieDataModel> response) {
                         if (response.code() == 200) {
 
                             model = response.body();
-                            adapter = new ExlorerRecyclerViewAdapter(Watchlist.this, model);
+                            adapter = new ExlorerRecyclerViewAdapter(Watchlist.this, model, new OnRowClickListener() {
+                                @Override
+                                public void OnRowClick(Movie film, int pozicija) {
+
+                                }
+                            });
                             adapter.setItems(model.results);
                             recycler.setHasFixedSize(true);
 
@@ -63,7 +70,7 @@ public class Watchlist extends AppCompatActivity {
 
                         else if (response.code() == 401) {
 
-                            Toast.makeText(Watchlist.this, "401 Error something's wrong!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Watchlist.this, "U are not Log In!", Toast.LENGTH_LONG).show();
 
                         }
                     }

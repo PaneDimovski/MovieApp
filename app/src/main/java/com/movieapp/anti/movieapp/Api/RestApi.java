@@ -14,8 +14,10 @@ import com.movieapp.anti.movieapp.Models.Movie;
 import com.movieapp.anti.movieapp.Models.MovieDataModel;
 import com.movieapp.anti.movieapp.Models.PeopleDataModel;
 import com.movieapp.anti.movieapp.Models.RateMoviePost;
+import com.movieapp.anti.movieapp.Models.Rated;
 import com.movieapp.anti.movieapp.Models.Token;
 import com.movieapp.anti.movieapp.Models.User;
+import com.movieapp.anti.movieapp.Models.VideoModel;
 import com.movieapp.anti.movieapp.Models.WatchListMoviePost;
 import com.movieapp.anti.movieapp.Others.CheckInternetConn;
 import com.movieapp.anti.movieapp.Others.LoggingInterceptor;
@@ -141,28 +143,53 @@ public class RestApi {
         return request().getFavorites( sessionId);
     }
 
-    public Call<Movie> getFavorit(int id,String sessionId)
+    public Call<Movie> getStateInfo(int id,String sessionId)
     {
-        return request().getFavorit(id,sessionId);
+        return request().getStateInfo(id,sessionId);
     }
 
 
-    public  Call<Movie> rateMovie (int id, String header,String sessionID, RateMoviePost rateMoviePost) {
-        return request().addRating(id,header,sessionID,rateMoviePost);
+    public  Call<Movie> AddRateMovie (int id, String header,String sessionID, Rated rate) {
+        return request().addRating(id,header,sessionID,rate);
 
     }
 
-    public Call<MovieDataModel> getRated (String sessionId) {
-        return request().getRated(sessionId);
+    public Call<MovieDataModel> getRateds (String sessionId) {
+        return request().getRateds(sessionId);
     }
 
     public  Call<Movie> addWatchlist (String sessionId, String header, WatchListMoviePost watchListMoviePost){
+
         return request().addWatchlist(sessionId, header, watchListMoviePost);
     }
 
-    public Call<MovieDataModel> getWatchlist(String sessionId) {
+    public Call<MovieDataModel> getWatchlists(String sessionId) {
 
-        return request().getWatchlist ( sessionId);
+        return request().getWatchlists ( sessionId);
+    }
+
+    public Call<User> getUserDetails(String sessionId) {
+
+        return request().getUserDetails ( sessionId);
+    }
+
+    public Call<VideoModel> getVideo(int id) {
+        return request().getVideo(id);
+    }
+
+    public Call<MovieDataModel> getSearchMovie(String query) {
+
+        return request().getSearchMovie(query);
+
+    }
+
+    public Call<MovieDataModel> getUserFavorites(String account_id,String session_id)
+
+    {return request().getUserFavorites(account_id,session_id);}
+
+    public Call<User> getUserDetails2(String sessionId) {
+
+        return request().getUserDetails2 ( sessionId);
     }
 
 }

@@ -23,26 +23,55 @@ public class PrefererencesManager2 {
 
     }
 
-    public static void  addUserID (String Email, Context c) {
+    public static void  addUser(String Name, Context c) {
 
 
-        getPreferences(c).edit().putString("UserLogin",Email).apply();
+        getPreferences(c).edit().putString("name",Name).apply();
 
     }
 
-    public static Token getToken (Context c) {
+    public static String getUser( Context c) {
 
-        return  new Gson().fromJson(getPreferences(c).getString("token", "" ),Token.class);
+        return getPreferences(c).getString( "name","");
+    }
+    public static String setUserID( Context c) {
+
+        return getPreferences(c).getString( "name","");
     }
 
-    public static String getUserid(Token token, Context c) {
+    public static void  addtoken (String token, Context c) {
 
-        return getPreferences(c).getString( "UserLogin","");
+        getPreferences(c).edit().putString("token",token).apply();
+
     }
+
+    public static String getToken (Context c) {
+
+        return  getPreferences(c).getString("token","");
+    }
+
+    public static void removeToken(Context c) {
+
+        getPreferences(c).edit().remove("token").apply();
+
+    }
+
+    public static void removeUserID(Context c) {
+
+        getPreferences(c).edit().remove("UserLogin").apply();
+
+    }
+
 
     public static void addSessionID (String Email, Context c)  {
 
         getPreferences(c).edit().putString("SessionID", Email).apply();
+    }
+
+    public static void removeSessionID(Context c) {
+
+        getPreferences(c).edit().remove("SessionID").apply();
+
     }
 
 // Oznaka kako za folder pod koj se zapisuvaat nekoi fajlovi stringovi
@@ -51,6 +80,7 @@ public class PrefererencesManager2 {
 
         return getPreferences(c).getString("SessionID", "");
     }
+
 
 
 

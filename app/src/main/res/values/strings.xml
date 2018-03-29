@@ -18,7 +18,10 @@
 
     <string name="recent_news">RECENT News</string>>
     <string name="in_news">IN News</string>>
-    <string name="published_date">PUblished Date</string>>
+    <string name="published_date">PUblished Date</string>
+    <string name="logout">logout</string>
+    <string name="login">login</string>>
+    <string name="guest" ><u> Guest  </u> </string>>
 
 
 </resources>

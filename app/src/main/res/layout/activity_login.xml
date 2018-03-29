@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="@color/pozadina4"
     tools:context="com.movieapp.anti.movieapp.Activitys.Login">
 
 
@@ -13,50 +13,118 @@
         android:id="@+id/slika"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/traka" />
+        android:background="@drawable/traka2" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/slikatraka" />
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_below="@id/logo"
-        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@+id/password"
+        android:layout_below="@+id/logo"
         android:layout_marginTop="30dp"
-        android:background="@drawable/forma2"
-        android:hint="UserName"
-        android:textAlignment="center" />
+        android:background="@drawable/forma1"
+        android:hint="Username"
+        android:textAlignment="center"
+        android:textColor="@color/Beige"
+
+        android:textColorHint="@color/Black" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_below="@id/username"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/forma2"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/forma1"
         android:hint="Password"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/Beige"
+        android:textColorHint="@color/Black" />
 
     <Button
-
+        android:id="@+id/kopce"
         android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
+        android:layout_height="40dp"
+        android:layout_above="@id/tekst"
         android:background="@drawable/forma2"
         android:text="Login"
-        android:id="@+id/kopce"
+        android:layout_marginBottom="20dp"
 
-        />
+        android:layout_centerInParent="true"
+        android:textColor="@color/Lavender" />
+
+    <TextView
+        android:id="@+id/noacc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/noacc2"
+        android:layout_below="@id/password"
+        android:layout_marginTop="3dp"
+        android:text="Don't have an"
+        android:textColor="@color/svetlasiva" />
+
+    <TextView
+        android:id="@+id/noacc2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/password"
+        android:layout_marginTop="3dp"
+        android:text=" account? "
+        android:textColor="@color/svetlasiva" />
+    <TextView
+        android:id="@+id/singin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="3dp"
+        android:text="Sign up"
+        android:layout_toRightOf="@id/noacc2"
+        android:textColor="@color/CornflowerBlue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/tekst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tekst2"
+        android:layout_toLeftOf="@id/tekst2"
+        android:text="Sign in "
+        android:textColor="@color/DimGray"
+        android:textSize="16dp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/tekst2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:text="as  "
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/DimGray"
+        android:textSize="16dp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/guest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tekst2"
+        android:layout_alignBottom="@+id/tekst2"
+        android:layout_toEndOf="@+id/tekst2"
+        android:text="@string/guest"
+        android:textColor="@color/Beige"
+        android:textSize="16dp"
+        android:textStyle="italic" />
 
 
 </RelativeLayout>

@@ -4,28 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.movieapp.anti.movieapp.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/forma3"
+            android:hint="Search"
+            android:imeOptions="actionSearch"
+            android:drawableLeft="@mipmap/search2"
+            android:paddingLeft="2dp"
+            android:textColor="@color/Beige"
+            android:textColorHint="@color/Wheat" />
+
+    </FrameLayout>
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
+        android:layout_below="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
 
 
         <android.support.design.widget.TabLayout
-            app:tabTextColor="@color/White"
-            app:tabSelectedTextColor="@color/colorAccent"
-            app:tabIndicatorColor="@color/colorAccent"
-            android:background="@color/Navy"
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="29dp"
+            android:background="@color/trans"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabSelectedTextColor="@color/ForestGreen"
+            app:tabTextColor="@color/White"
+            android:splitMotionEvents="true"
+            app:elevation="0dp"
+            >
+
 
         </android.support.design.widget.TabLayout>
 
+
+
     </android.support.v4.view.ViewPager>
+
+    <RelativeLayout
+        android:layout_below="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
 </RelativeLayout>

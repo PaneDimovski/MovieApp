@@ -14,10 +14,20 @@ public class Movie implements Serializable {
     public String overview;
 
     public Boolean favorite;
-    public Boolean favorites;
+    public transient  Boolean favorites;
 
     public Boolean watchlist;
 
+
+   public Rated rated;
+
+//    public Boolean getRated() {
+//        return rated;
+//    }
+//
+//    public void setRated(Boolean rated) {
+//        this.rated = rated;
+//    }
 
     public Boolean getFavorites() {
         return favorites;
@@ -28,6 +38,9 @@ public class Movie implements Serializable {
     }
 
     public Credits credits;
+
+    public Movie() {
+    }
 
     public Movie(String original_title, int id, String poster_path) {
         this.original_title = original_title;

@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.movieapp.anti.movieapp.Adapters.ExlorerRecyclerViewAdapter;
 import com.movieapp.anti.movieapp.Api.ApiService;
 import com.movieapp.anti.movieapp.Api.RestApi;
+import com.movieapp.anti.movieapp.Listeners.OnRowClickListener;
+import com.movieapp.anti.movieapp.Models.Movie;
 import com.movieapp.anti.movieapp.Models.MovieDataModel;
 import com.movieapp.anti.movieapp.R;
 
@@ -61,7 +63,12 @@ public class Popular extends Fragment {
 //            }
 //        });
 
-        adapter = new ExlorerRecyclerViewAdapter(getContext(), new MovieDataModel());
+        adapter = new ExlorerRecyclerViewAdapter(getContext(), new MovieDataModel(), new OnRowClickListener() {
+            @Override
+            public void OnRowClick(Movie film, int pozicija) {
+
+            }
+        });
 
 
         recycler.setLayoutManager(layoutManager);
@@ -86,7 +93,7 @@ public class Popular extends Fragment {
 
                         else if (response.code() == 401) {
 
-                            Toast.makeText(getContext(), "401 Greska wrong!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "U are not Log In!", Toast.LENGTH_LONG).show();
 
                         }
                     }

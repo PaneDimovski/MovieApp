@@ -11,9 +11,15 @@ public class User implements Serializable {
     public String username;
     public String password;
     public String name;
-    public String avatar;
+    public Avatar avatar;
+    public String guest;
+    public String id;
 
 
+//    public User(String username, String name) {
+//        this.username = username;
+//        this.name = name;
+//    }
 
 
     public User(String username, String password) {
@@ -45,11 +51,5 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
 }

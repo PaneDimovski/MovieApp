@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.movieapp.anti.movieapp.Adapters.ExlorerRecyclerViewAdapter;
 import com.movieapp.anti.movieapp.Api.ApiService;
 import com.movieapp.anti.movieapp.Api.RestApi;
+import com.movieapp.anti.movieapp.Listeners.OnRowClickListener;
 import com.movieapp.anti.movieapp.Models.Movie;
 import com.movieapp.anti.movieapp.Models.MovieDataModel;
 import com.movieapp.anti.movieapp.Preferences.PrefererencesManager2;
@@ -68,7 +69,12 @@ public class Favorites extends AppCompatActivity {
                         if (response.code() == 200) {
 
                             model = response.body();
-                            adapter = new ExlorerRecyclerViewAdapter(Favorites.this, model);
+                            adapter = new ExlorerRecyclerViewAdapter(Favorites.this, model, new OnRowClickListener() {
+                                @Override
+                                public void OnRowClick(Movie film, int pozicija) {
+
+                                }
+                            });
                             adapter.setItems(model.results);
                             recycler.setHasFixedSize(true);
 
@@ -78,7 +84,7 @@ public class Favorites extends AppCompatActivity {
 
                         else if (response.code() == 401) {
 
-                            Toast.makeText(Favorites.this, "401 Error something's wrong!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Favorites.this, "U are not Log In!", Toast.LENGTH_LONG).show();
 
                         }
                     }

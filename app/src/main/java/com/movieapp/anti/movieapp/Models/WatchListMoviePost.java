@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 public class WatchListMoviePost implements Serializable {
 
-    @SerializedName("media_type")
+
 
     public String media_type;
 

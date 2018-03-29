@@ -15,6 +15,7 @@ import com.movieapp.anti.movieapp.Activitys.DetailsActiviti;
 import com.movieapp.anti.movieapp.Activitys.Favorites;
 import com.movieapp.anti.movieapp.Api.ApiService;
 import com.movieapp.anti.movieapp.Api.RestApi;
+import com.movieapp.anti.movieapp.Listeners.OnRowClickListener;
 import com.movieapp.anti.movieapp.Models.Details;
 import com.movieapp.anti.movieapp.Models.Movie;
 import com.movieapp.anti.movieapp.Models.MovieDataModel;
@@ -43,7 +44,7 @@ public class ExlorerRecyclerViewAdapter extends RecyclerView.Adapter<ExlorerRecy
     List<Movie> movieDataList = new ArrayList<>();
 
     Context context;
-
+    OnRowClickListener onRowClickListener;
 
     public ExlorerRecyclerViewAdapter(List<Movie> movieDataList) {
 
@@ -51,10 +52,10 @@ public class ExlorerRecyclerViewAdapter extends RecyclerView.Adapter<ExlorerRecy
 
     }
 
-    public ExlorerRecyclerViewAdapter(Context context, MovieDataModel movieModel) {
+    public ExlorerRecyclerViewAdapter(Context context, MovieDataModel movieModel, OnRowClickListener onRowClickListener) {
 
         this.context = context;
-
+        this.onRowClickListener= onRowClickListener;
         movieDataList = movieModel.results;
     }
 
@@ -81,9 +82,11 @@ public class ExlorerRecyclerViewAdapter extends RecyclerView.Adapter<ExlorerRecy
         Movie movieData = movieDataList.get(position);
 
         holder.naziv.setText(movieData.getOriginal_title());
-        String path = "http://image.tmdb.org/t/p/w185" + movieData.getPoster_path();
+        String path = "http://image.tmdb.org/t/p/w500" + movieData.getPoster_path();
 
-       Picasso.with(context).load(path).centerInside().fit().into(holder.poster);
+        Picasso.with(context).load(path).fit().into(holder.poster);
+
+
 
 
     }
@@ -94,8 +97,6 @@ public class ExlorerRecyclerViewAdapter extends RecyclerView.Adapter<ExlorerRecy
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
-
 
 
         @BindView(R.id.naziv)

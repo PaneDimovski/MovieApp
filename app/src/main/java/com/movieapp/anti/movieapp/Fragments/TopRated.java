@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.movieapp.anti.movieapp.Adapters.ExlorerRecyclerViewAdapter;
 import com.movieapp.anti.movieapp.Api.ApiService;
 import com.movieapp.anti.movieapp.Api.RestApi;
+import com.movieapp.anti.movieapp.Listeners.OnRowClickListener;
+import com.movieapp.anti.movieapp.Models.Movie;
 import com.movieapp.anti.movieapp.Models.MovieDataModel;
 import com.movieapp.anti.movieapp.R;
 
@@ -79,7 +81,12 @@ public class TopRated extends Fragment {
                         if (response.code() == 200) {
 
                             model = response.body();
-                            adapter = new ExlorerRecyclerViewAdapter(getActivity(), model);
+                            adapter = new ExlorerRecyclerViewAdapter(getActivity(), model, new OnRowClickListener() {
+                                @Override
+                                public void OnRowClick(Movie film, int pozicija) {
+
+                                }
+                            });
                             adapter.setItems(model.results);
                             recycler.setHasFixedSize(true);
 
@@ -89,7 +96,7 @@ public class TopRated extends Fragment {
 
                         else if (response.code() == 401) {
 
-                            Toast.makeText(getContext(), "401 Greska wrong!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "401 Error !", Toast.LENGTH_LONG).show();
 
                         }
                     }

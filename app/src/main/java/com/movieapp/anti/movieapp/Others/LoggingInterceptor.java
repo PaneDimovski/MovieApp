@@ -17,11 +17,11 @@ public class LoggingInterceptor implements Interceptor {
 
     private Context activity;
 
-    private Token token;
+    private String token;
 
     private boolean logout = false;
 
-    public LoggingInterceptor(Context activity, Token token) {
+    public LoggingInterceptor(Context activity, String token) {
 
         this.activity = activity;
 
@@ -39,7 +39,7 @@ public class LoggingInterceptor implements Interceptor {
 
         try {
 
-            access_token = token.request_token;
+            access_token = token;
 
         } catch (NullPointerException e) {
 
